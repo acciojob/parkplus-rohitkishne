@@ -29,7 +29,7 @@ public class PaymentServiceImpl implements PaymentService {
             throw new Exception("Insufficient Amount");
         }
         Payment payment;
-        if(mode.equals(PaymentMode.CASH))
+        if(mode.equalsIgnoreCase(String.valueOf(PaymentMode.CASH)))
         {
             payment = new Payment();
             payment.setPaymentCompleted(true);
@@ -38,7 +38,7 @@ public class PaymentServiceImpl implements PaymentService {
             reservation.setPayment(payment);
             reservationRepository2.save(reservation);
 
-        } else if (mode.equals(PaymentMode.CARD)) {
+        } else if (mode.equalsIgnoreCase(String.valueOf(PaymentMode.CARD))) {
 
             payment = new Payment();
             payment.setPaymentCompleted(true);
@@ -46,7 +46,7 @@ public class PaymentServiceImpl implements PaymentService {
             payment.setReservation(reservation);
             reservation.setPayment(payment);
             reservationRepository2.save(reservation);
-        } else if (mode.equals(PaymentMode.UPI)) {
+        } else if (mode.equalsIgnoreCase(String.valueOf(PaymentMode.UPI))) {
 
             payment = new Payment();
             payment.setPaymentCompleted(true);
