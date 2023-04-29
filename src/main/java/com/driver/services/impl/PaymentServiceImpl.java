@@ -29,28 +29,28 @@ public class PaymentServiceImpl implements PaymentService {
             throw new Exception("Insufficient Amount");
         }
         Payment payment;
-        if(mode.equalsIgnoreCase(String.valueOf(PaymentMode.CASH)))
+        if(mode.equalsIgnoreCase("CASH"))
         {
             payment = new Payment();
             payment.setPaymentCompleted(true);
-            payment.setPaymentMode(PaymentMode.valueOf(mode));
+            payment.setPaymentMode(PaymentMode.CASH);
             payment.setReservation(reservation);
             reservation.setPayment(payment);
             reservationRepository2.save(reservation);
 
-        } else if (mode.equalsIgnoreCase(String.valueOf(PaymentMode.CARD))) {
+        } else if (mode.equalsIgnoreCase("CARD")) {
 
             payment = new Payment();
             payment.setPaymentCompleted(true);
-            payment.setPaymentMode(PaymentMode.valueOf(mode));
+            payment.setPaymentMode(PaymentMode.CARD);
             payment.setReservation(reservation);
             reservation.setPayment(payment);
             reservationRepository2.save(reservation);
-        } else if (mode.equalsIgnoreCase(String.valueOf(PaymentMode.UPI))) {
+        } else if (mode.equalsIgnoreCase("UPI")) {
 
             payment = new Payment();
             payment.setPaymentCompleted(true);
-            payment.setPaymentMode(PaymentMode.valueOf(mode));
+            payment.setPaymentMode(PaymentMode.UPI);
             payment.setReservation(reservation);
             reservation.setPayment(payment);
             reservationRepository2.save(reservation);
@@ -58,7 +58,7 @@ public class PaymentServiceImpl implements PaymentService {
         else {
             payment = new Payment();
             payment.setPaymentCompleted(false);
-            payment.setPaymentMode(PaymentMode.valueOf(mode));
+//            payment.setPaymentMode(PaymentMode.valueOf(mode));
             reservation.setPayment(payment);
             payment.setReservation(reservation);
             reservationRepository2.save(reservation);
